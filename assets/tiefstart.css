@@ -566,6 +566,30 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   16 · Sektion 09 — Wer das macht
+   Diese Sektion bricht bei 290px um, nicht bei 300px wie die übrigen.
+   -------------------------------------------------------------------------- */
+
+.raster--290 {
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+/* Bildspalte mit festem 16px-Abstand statt der üblichen Spalten-Lücke. */
+.spalte--bild {
+  gap: 16px;
+}
+
+.portrait {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.

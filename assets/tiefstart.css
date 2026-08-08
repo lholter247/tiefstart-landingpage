@@ -665,6 +665,15 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   19 · Sektion 13 — Mitmachen und Weitersagen
+   Engerer Spaltenabstand als in den übrigen zweispaltigen Sektionen.
+   -------------------------------------------------------------------------- */
+
+.spalte--eng {
+  gap: clamp(18px, 2vw, 24px);
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.
@@ -716,6 +725,22 @@ a:hover {
 }
 
 .cta--sekundaer:hover {
+  background: var(--sand);
+  border-color: var(--terrakotta);
+  color: var(--terrakotta-dunkel);
+}
+
+/* Sektion 13 — wie der sekundäre Button, nur größer. */
+.cta--sekundaer-gross {
+  align-self: flex-start;
+  height: 52px;
+  padding: 0 30px;
+  font-size: 18px;
+  color: var(--terrakotta);
+  border-color: var(--linie-terrakotta);
+}
+
+.cta--sekundaer-gross:hover {
   background: var(--sand);
   border-color: var(--terrakotta);
   color: var(--terrakotta-dunkel);

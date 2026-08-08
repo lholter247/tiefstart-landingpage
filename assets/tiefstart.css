@@ -454,6 +454,82 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   14 · Sektion 07 — Wie es meistens verläuft
+   Die abschließende Linie unter der letzten Etappe war im Prototyp ein
+   leeres div mit border-top. Hier ist es ein border-bottom auf der letzten
+   Etappe: dieselbe 1px-Linie an derselben Stelle, ohne inhaltsleeres Element.
+   -------------------------------------------------------------------------- */
+
+.etappen {
+  display: flex;
+  flex-direction: column;
+}
+
+.etappe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(22px, 2.6vw, 30px) 0;
+  border-top: 1px solid var(--linie);
+}
+
+.etappe:last-child {
+  border-bottom: 1px solid var(--linie);
+}
+
+.etappe__kopf {
+  flex: 0 0 auto;
+  min-width: 120px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.etappe__nr {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 30px);
+  color: var(--terrakotta);
+}
+
+.etappe__titel {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(21px, 1.9vw, 25px);
+  color: var(--text);
+}
+
+.etappe__body {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.etappe__zitat {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 1.9vw, 24px);
+  line-height: 1.5;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+.etappe__text {
+  font-size: var(--fs-klein);
+  line-height: 1.7;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+/* Nachsatz in Label-Grau statt Fließtext-Grau. */
+.fussnote {
+  font-size: var(--fs-klein);
+  line-height: 1.7;
+  color: var(--label);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.

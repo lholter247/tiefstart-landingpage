@@ -970,3 +970,20 @@ a:hover {
   color: var(--feuerschein);
 }
 
+/* --------------------------------------------------------------------------
+   21 · Fehlerseite
+   Hält die Fußzeile unten, wenn wenig Inhalt da ist. Nur über die Klasse am
+   body aktiv, die Startseite bleibt unberührt.
+   -------------------------------------------------------------------------- */
+
+.seite-kurz {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.seite-kurz main {
+  flex: 1;
+}
+

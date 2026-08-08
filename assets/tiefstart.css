@@ -590,6 +590,46 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   17 · Sektion 11 — Wie du dazukommst
+   -------------------------------------------------------------------------- */
+
+.raster--260 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(24px, 3vw, 32px);
+}
+
+.schritt {
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: var(--papier);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.schritt__nr {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.2vw, 28px);
+  color: var(--terrakotta);
+}
+
+.schritt__titel {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(21px, 1.9vw, 25px);
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.schritt__text {
+  font-size: var(--fs-klein);
+  line-height: 1.7;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.

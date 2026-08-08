@@ -306,9 +306,24 @@ a:hover {
   color: var(--text);
 }
 
+.titel--36 {
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.2;
+}
+
 .titel--40 {
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.2;
+}
+
+.titel--42 {
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.2;
+}
+
+.titel--52 {
+  font-size: clamp(32px, 4.6vw, 52px);
+  line-height: 1.12;
 }
 
 .titel--44 {
@@ -336,6 +351,11 @@ a:hover {
   font-weight: 600;
 }
 
+/* Nur dunkler, ohne Fettung — Sektion 08 nutzt genau das. */
+.fliess--dunkel {
+  color: var(--text);
+}
+
 .fliess--klein {
   font-size: var(--fs-klein);
   line-height: 1.7;
@@ -343,6 +363,15 @@ a:hover {
 
 .sektion--wald .fliess {
   color: var(--text-wald-2);
+}
+
+.sektion--wald .titel {
+  color: var(--text-wald);
+}
+
+/* Zahlenblöcke von Notrufnummern nie über einen Zeilenumbruch trennen. */
+.nowrap {
+  white-space: nowrap;
 }
 
 /* --------------------------------------------------------------------------

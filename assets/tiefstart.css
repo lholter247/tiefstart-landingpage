@@ -251,10 +251,14 @@ a:hover {
   gap: var(--gap-sektion);
 }
 
-/* Zweispaltiges Raster, bricht ohne Media Query einspaltig um */
+/* Zweispaltiges Raster, bricht ohne Media Query einspaltig um.
+   min(300px, 100%) statt bloßer 300px: eine Grid-Spur kann sonst nicht unter
+   ihre Untergrenze schrumpfen und läuft auf sehr schmalen Displays aus dem
+   Container. Ab 348px Viewport rechnerisch identisch zu 300px, darunter
+   schrumpft die Spur mit, statt die Seite seitlich scrollen zu lassen. */
 .raster {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--gap-raster);
 }
 
@@ -800,7 +804,7 @@ a:hover {
    -------------------------------------------------------------------------- */
 
 .raster--290 {
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
 }
 
 /* Bildspalte mit festem 16px-Abstand statt der üblichen Spalten-Lücke. */
@@ -823,7 +827,7 @@ a:hover {
    -------------------------------------------------------------------------- */
 
 .raster--260 {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: clamp(24px, 3vw, 32px);
 }
 

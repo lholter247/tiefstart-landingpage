@@ -4,11 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- FREIGABE OFFEN (Schritt 15): title und description sind neuer Text und
-     stehen so nicht im Prototyp. Beide Formulierungen sind wortwörtlich aus
-     dem Prototyp entnommen (h1 bzw. erster Satz des Hero-Absatzes). -->
-<title>Tiefstart — Du musst da nicht alleine durch.</title>
-<meta name="description" content="Tiefstart ist eine Gemeinschaft für Menschen in einer Krise: Menschen, die da durch sind, begleiten Menschen, die mittendrin stecken.">
+<title>Tiefstart – begleitete Online-Gemeinschaft in der Krise</title>
+<meta name="description" content="Eine begleitete Online-Gemeinschaft für Menschen in einer Krise. Fester Takt, kleine Gruppen, Menschen, die es kennen. Keine Therapie. Einstieg jederzeit nach einem kostenlosen Erstgespräch.">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://projekt-tiefstart.de">
+<meta property="og:title" content="Tiefstart – begleitete Online-Gemeinschaft in der Krise">
+<meta property="og:description" content="Eine begleitete Online-Gemeinschaft für Menschen in einer Krise. Fester Takt, kleine Gruppen, Menschen, die es kennen. Keine Therapie. Einstieg jederzeit nach einem kostenlosen Erstgespräch.">
+
+<!-- PLATZHALTER: Vorschaubild für WhatsApp, Signal, LinkedIn und Co.
+     Datei als og-image.jpg im Projektwurzelverzeichnis ablegen, 1200x630 px.
+     Ausgetauscht wird nur die Datei — an diesen drei Zeilen ändert sich nichts. -->
+<meta property="og:image" content="https://projekt-tiefstart.de/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tiefstart – begleitete Online-Gemeinschaft in der Krise">
+<meta name="twitter:description" content="Eine begleitete Online-Gemeinschaft für Menschen in einer Krise. Fester Takt, kleine Gruppen, Menschen, die es kennen. Keine Therapie. Einstieg jederzeit nach einem kostenlosen Erstgespräch.">
+<meta name="twitter:image" content="https://projekt-tiefstart.de/og-image.jpg">
 
 <link rel="icon" href="assets/tiefstart-favicon.svg" type="image/svg+xml">
 
@@ -51,13 +66,13 @@
     <div class="breite stapel">
       <span class="label">Vielleicht kennst du das</span>
       <h2 class="titel titel--44">Der Boden ist weg.</h2>
-      <div class="aussagen mw-30">
-        <p class="aussage">Deine Gedanken drehen sich im Kreis.</p>
-        <p class="aussage">Du bist erschöpft vom Kämpfen und Probieren.</p>
-        <p class="aussage">Du kannst dir gerade nicht vorstellen, dass das nochmal anders wird.</p>
-        <p class="aussage">Es ist einsam.</p>
-        <p class="aussage">Und du erkennst dich selbst nicht wieder.</p>
-      </div>
+      <ul class="aussagen mw-30" role="list">
+        <li class="aussage">Deine Gedanken drehen sich im Kreis.</li>
+        <li class="aussage">Du bist erschöpft vom Kämpfen und Probieren.</li>
+        <li class="aussage">Du kannst dir gerade nicht vorstellen, dass das nochmal anders wird.</li>
+        <li class="aussage">Es ist einsam.</li>
+        <li class="aussage">Und du erkennst dich selbst nicht wieder.</li>
+      </ul>
       <p class="fliess fliess--stark mw-32">Das ist keine Schwäche und kein Defekt. Das ist, was eine Krise mit Menschen macht.</p>
     </div>
   </section>
@@ -302,7 +317,7 @@
       <img class="marke__zeichen" src="assets/tiefstart-zeichen-feuerschein.svg" height="24" alt="">
       <span class="marke__wort">Tiefstart</span>
     </div>
-    <nav class="seitenfuss__nav">
+    <nav class="seitenfuss__nav" aria-label="Rechtliches und Kontakt">
       <a href="/impressum">Impressum</a>
       <a href="/datenschutz">Datenschutz</a>
       <a href="/kontakt">Kontakt</a>

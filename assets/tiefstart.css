@@ -530,6 +530,42 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   15 · Sektion 08 — Für wen das ist
+   Wie im Notfall-Banner wechseln die Links beim Hovern die Farbe nicht:
+   im Prototyp trugen sie eine Inline-Farbe, an der die globale a:hover-Regel
+   nie vorbeikam.
+   -------------------------------------------------------------------------- */
+
+.hinweisfeld {
+  border: 1px solid var(--linie-warm);
+  border-radius: var(--radius);
+  background: var(--warnfeld);
+  padding: clamp(28px, 3.4vw, 44px) clamp(24px, 3.4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hinweisfeld p {
+  font-size: var(--fs-klein);
+  line-height: 1.7;
+  color: var(--warn-text);
+}
+
+.hinweisfeld__nummern {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hinweisfeld a,
+.hinweisfeld a:hover {
+  color: var(--warn-link);
+  font-weight: 600;
+  border-bottom: 1px solid var(--warn-link-linie);
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.

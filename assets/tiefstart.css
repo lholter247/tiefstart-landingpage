@@ -987,3 +987,22 @@ a:hover {
   flex: 1;
 }
 
+/* --------------------------------------------------------------------------
+   22 · Textseiten
+   Impressum, Datenschutz, Kontakt: kein Hero, keine Buttons. Die Zeilenlänge
+   begrenzt mw-34 auf den Absätzen — bei 1280px sind das rund 70 Zeichen.
+   Überschriftenhierarchie: h1 in Newsreader, die h2 als Versal-Label wie die
+   Sektionsmarken auf der Startseite.
+   -------------------------------------------------------------------------- */
+
+.textblock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Browser setzen address von Haus aus kursiv. */
+.adresse {
+  font-style: normal;
+}
+

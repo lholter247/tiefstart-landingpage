@@ -375,6 +375,85 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   13 · Sektion 06 — Wie eine Woche aussieht
+   Der Prototyp baut das aus divs, inhaltlich ist es aber eine Tabelle:
+   ohne Tabellensemantik geht der Zusammenhang "Wann → Was" für Screenreader
+   verloren. Also echtes <table>, dessen display-Werte auf das Flex-Layout
+   des Prototyps umgestellt sind — deshalb reicht flex-wrap die zweite Spalte
+   auf schmalen Displays unter die erste, was eine echte Tabelle nicht kann.
+   Das Umstellen von display entfernt in Browsern allerdings die impliziten
+   Tabellenrollen, darum stehen sie im Markup explizit als role-Attribute.
+   -------------------------------------------------------------------------- */
+
+.woche {
+  display: block;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.woche thead,
+.woche tbody {
+  display: block;
+}
+
+.woche tr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.woche thead tr {
+  background: var(--sand);
+  border-bottom: 1px solid var(--linie);
+  padding: 14px clamp(20px, 3vw, 32px);
+}
+
+.woche tbody tr {
+  padding: clamp(18px, 2.4vw, 26px) clamp(20px, 3vw, 32px);
+  border-bottom: 1px solid var(--linie-zart);
+  align-items: baseline;
+}
+
+.woche th,
+.woche td {
+  display: block;
+}
+
+.woche th:first-child,
+.woche td:first-child {
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+.woche th:last-child,
+.woche td:last-child {
+  flex: 1 1 260px;
+}
+
+.woche th {
+  text-align: left;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.woche__wann {
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  color: var(--terrakotta);
+}
+
+.woche__was {
+  font-size: var(--fs-klein);
+  line-height: 1.65;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.

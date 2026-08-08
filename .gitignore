@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editoren
+.vscode/
+.idea/
+*.swp
+*~
+
+# Vercel
+.vercel/
+
+# Node — die Seite braucht keinen Build, aber falls mal ein Tool dazukommt
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# Umgebungsvariablen — nie ins Repo
+.env
+.env.*
+!.env.example
+
+# Claude Code: launch.json bleibt drin (Dev-Server-Konfiguration, für alle nützlich),
+# settings.local.json nicht (rechnerspezifische Berechtigungen)
+.claude/settings.local.json
+
+# Temporäres
+*.log
+*.tmp
+scratchpad/

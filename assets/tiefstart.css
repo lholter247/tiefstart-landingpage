@@ -1,0 +1,495 @@
+/* ==========================================================================
+   Tiefstart — projekt-tiefstart.de
+   Fundament: Schriften, Reset, Tokens, Fokus, Layout-Bausteine.
+   Werte 1:1 aus dem Prototyp "Tiefstart Landingpage.dc.html" übernommen.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1 · Schriften (self-hosted, kein Request an Dritte)
+   Newsreader: variable opsz-Achse 6–72 wie in der Prototyp-Einbindung.
+   Source Sans 3: variable wght-Achse 200–900, genutzt werden 400 und 600.
+   Latin-Subset deckt ä ö ü ß · „ " — € vollständig ab.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/newsreader-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/newsreader-latin-400-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('fonts/source-sans-3-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* --------------------------------------------------------------------------
+   2 · Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Flächen */
+  --papier: #FAF6F1;
+  --sand: #F2EAE0;
+  --warnfeld: #F5EBD8;
+  --tiefdunkel: #1D2427;
+  --waldgruen: #2E4238;
+
+  /* Akzente */
+  --feuerschein: #E8A05C;
+  --feuerschein-hell: #F2B87A;
+  --terrakotta: #8F4726;
+  --terrakotta-dunkel: #7A3C20;
+
+  /* Text auf hellem Grund */
+  --text: #22201D;
+  --text-2: #4A443E;
+  --label: #6E6660;
+
+  /* Text auf Tiefdunkel */
+  --text-invers: #F5EFE7;
+  --text-invers-2: #CFC5B8;
+  --text-invers-3: #A79C90;
+
+  /* Text auf Waldgrün */
+  --text-wald: #F1F5F1;
+  --text-wald-2: #DCE5DD;
+  --label-wald: #A9BFAF;
+
+  /* Warnfeld (Notfall-Banner, Sektion 08) */
+  --warn-text: #5C4116;
+  --warn-link: #7A5520;
+  --warn-link-linie: rgba(122, 85, 32, 0.4);
+
+  /* Linien */
+  --linie: #E2D6C6;
+  --linie-zart: #EDE3D6;
+  --linie-warm: #E7D6B8;
+  --linie-terrakotta: #D9BBA5;
+  --linie-dunkel: #313A3E;
+
+  /* Schriftfamilien */
+  --serif: 'Newsreader', Georgia, serif;
+
+  /* Layout */
+  --breite: min(100%, 1160px);
+  --pad-x: clamp(24px, 5vw, 80px);
+  --pad-y: clamp(64px, 9vw, 128px);
+  --radius: 4px;
+  --uebergang: 160ms ease;
+
+  /* Schriftgrößen */
+  --fs-body: clamp(18px, 1.35vw, 20px);
+  --fs-fliess: clamp(19px, 1.6vw, 21px);
+  --fs-klein: clamp(18px, 1.5vw, 20px);
+  --fs-label: 15px;
+
+  /* Abstände innerhalb einer Sektion */
+  --gap-sektion: clamp(32px, 4vw, 48px);
+  --gap-spalte: clamp(20px, 2.4vw, 28px);
+  --gap-raster: clamp(28px, 4vw, 56px);
+  --gap-raster-weit: clamp(32px, 5vw, 72px);
+}
+
+/* --------------------------------------------------------------------------
+   3 · Reset und Basis
+   Im Prototyp trägt jedes h1/h2/p ein eigenes margin:0 — der Reset hier ist
+   dazu rechnerisch identisch.
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--text);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--terrakotta);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--terrakotta-dunkel);
+}
+
+::selection {
+  background: rgba(232, 160, 92, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   4 · Fokus
+   Im Prototyp fehlen Fokus-Styles komplett. Kontrast des Rings:
+   Terrakotta auf Papier 6,3:1 · Feuerschein auf Tiefdunkel 7,2:1 —
+   beide deutlich über den von WCAG geforderten 3:1.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--terrakotta);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sektion--dunkel :focus-visible,
+.sektion--wald :focus-visible,
+.seitenfuss :focus-visible {
+  outline-color: var(--feuerschein);
+}
+
+/* --------------------------------------------------------------------------
+   5 · Bewegung reduzieren
+   Die Seite animiert nur die 160-ms-Übergänge der Buttons. Wer im System
+   weniger Bewegung wünscht, bekommt auch die nicht.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6 · Sprungmarke (WCAG 2.4.1)
+   Unsichtbar, bis sie den Fokus bekommt.
+   -------------------------------------------------------------------------- */
+
+.sprungmarke {
+  position: absolute;
+  z-index: 100;
+  top: 8px;
+  left: 8px;
+  padding: 12px 22px;
+  background: var(--tiefdunkel);
+  color: var(--text-invers);
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 600;
+  clip-path: inset(50%);
+}
+
+.sprungmarke:focus {
+  clip-path: none;
+}
+
+/* --------------------------------------------------------------------------
+   7 · Layout-Bausteine
+   -------------------------------------------------------------------------- */
+
+.breite {
+  width: var(--breite);
+  margin: 0 auto;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+.sektion {
+  background: var(--papier);
+}
+
+.sektion--sand {
+  background: var(--sand);
+  border-block: 1px solid var(--linie);
+}
+
+.sektion--dunkel {
+  position: relative;
+  background: var(--tiefdunkel);
+  overflow: hidden;
+}
+
+.sektion--wald {
+  background: var(--waldgruen);
+}
+
+/* Spaltenstapel innerhalb einer Sektion */
+.stapel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sektion);
+}
+
+/* Zweispaltiges Raster, bricht ohne Media Query einspaltig um */
+.raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-raster);
+}
+
+.raster--weit {
+  gap: var(--gap-raster-weit);
+  align-items: start;
+}
+
+.spalte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-spalte);
+}
+
+/* Versal-Label über einer Sektion. Trägt je nach Sektion ein <h2> oder
+   ein <span> — die Darstellung ist in beiden Fällen dieselbe. */
+.label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.sektion--wald .label {
+  color: var(--label-wald);
+}
+
+/* Fließtext-Varianten */
+.fliess {
+  font-size: var(--fs-fliess);
+  line-height: 1.72;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+.fliess--stark {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.fliess--klein {
+  font-size: var(--fs-klein);
+  line-height: 1.7;
+}
+
+.sektion--wald .fliess {
+  color: var(--text-wald-2);
+}
+
+/* --------------------------------------------------------------------------
+   8 · Buttons
+   Wichtig: der Prototyp lässt bewusst nur background und border-color
+   übergehen, nicht color. Das ist hier 1:1 nachgebaut.
+   -------------------------------------------------------------------------- */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radius);
+  transition: background var(--uebergang), border-color var(--uebergang);
+}
+
+/* Hero und Schluss-Sektion.
+   min-height statt height: das Label "Gespräch vereinbaren — 25 Minuten"
+   braucht 342px und bricht unter 390px Viewport-Breite auf zwei Zeilen um —
+   mit fester Höhe lief die zweite Zeile unten aus der Fläche. Auf Desktop
+   ergibt das gemessen exakt dieselben 56px wie im Prototyp. */
+.cta--primaer {
+  min-height: 56px;
+  padding: 11px 32px;
+  font-size: 18px;
+  color: var(--tiefdunkel);
+  background: var(--feuerschein);
+  border-color: var(--feuerschein);
+}
+
+.cta--primaer:hover {
+  background: var(--feuerschein-hell);
+  border-color: var(--feuerschein-hell);
+  color: var(--tiefdunkel);
+}
+
+/* Der Standard-Fokusring wäre auf dunklem Grund Feuerschein — also dieselbe
+   Farbe wie der Button selbst. Hier deshalb hell, damit der Ring sichtbar
+   vom Button zu unterscheiden ist (13,9:1 gegen Tiefdunkel). */
+.cta--primaer:focus-visible {
+  outline-color: var(--text-invers);
+}
+
+/* Header */
+.cta--sekundaer {
+  height: 46px;
+  padding: 0 22px;
+  font-size: 17px;
+  color: var(--terrakotta);
+  border-color: var(--linie-terrakotta);
+}
+
+.cta--sekundaer:hover {
+  background: var(--sand);
+  border-color: var(--terrakotta);
+  color: var(--terrakotta-dunkel);
+}
+
+/* --------------------------------------------------------------------------
+   9 · Notfall-Banner
+   Im Prototyp trugen alle Links eine Inline-Farbe, wodurch die globale
+   a:hover-Regel dort nie gegriffen hat. Die Regel unten stellt das nach:
+   die Banner-Links wechseln beim Hovern die Farbe nicht.
+   -------------------------------------------------------------------------- */
+
+.notfall {
+  background: var(--warnfeld);
+  border-bottom: 1px solid var(--linie-warm);
+  padding: 12px var(--pad-x);
+}
+
+.notfall p {
+  width: var(--breite);
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--warn-link);
+  text-wrap: pretty;
+}
+
+/* nowrap: auf schmalen Displays soll keine Notrufnummer mitten im Zahlenblock
+   umbrechen. Ab ca. 340px Breite ändert das an der Darstellung nichts. */
+.notfall a,
+.notfall a:hover {
+  color: var(--warn-link);
+  border-bottom: 1px solid var(--warn-link-linie);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   10 · Kopfzeile
+   -------------------------------------------------------------------------- */
+
+.seitenkopf {
+  border-bottom: 1px solid var(--linie);
+}
+
+.seitenkopf__innen {
+  width: var(--breite);
+  margin: 0 auto;
+  padding: 20px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.marke {
+  display: flex;
+  align-items: center;
+  gap: 10.3px;
+}
+
+.marke,
+.marke:hover {
+  color: var(--text);
+}
+
+/* height wie im Prototyp; aspect-ratio aus der viewBox 0 -21 100 121,
+   damit vor dem Laden des SVG kein Layoutsprung entsteht. */
+.marke__zeichen {
+  height: 25px;
+  aspect-ratio: 100 / 121;
+}
+
+.marke__wort {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* --------------------------------------------------------------------------
+   11 · Sektion 01 — Hero
+   Der Feuerschein-Verlauf lag im Prototyp in einem eigenen leeren <div>.
+   Hier ist er ein ::before, damit im DOM kein inhaltsloses Element steht.
+   -------------------------------------------------------------------------- */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(58% 62% at 78% 14%, rgba(232, 160, 92, 0.22) 0%, rgba(29, 36, 39, 0) 62%);
+}
+
+/* Eigene Polsterung: der Hero ist oben/unten großzügiger als die übrigen
+   Sektionen, und unten minimal knapper als oben (148 gegen 152). */
+.hero__innen {
+  position: relative;
+  width: var(--breite);
+  margin: 0 auto;
+  padding: clamp(72px, 11vw, 152px) var(--pad-x) clamp(72px, 11vw, 148px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.4vw, 40px);
+  align-items: flex-start;
+}
+
+.hero__titel {
+  max-width: 15em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6.4vw, 72px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--text-invers);
+  text-wrap: pretty;
+}
+
+.hero__text {
+  max-width: 32em;
+  font-size: clamp(19px, 1.7vw, 22px);
+  line-height: 1.72;
+  color: var(--text-invers-2);
+  text-wrap: pretty;
+}
+
+.hero__aktion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hero__hinweis {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-invers-3);
+}

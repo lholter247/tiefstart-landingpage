@@ -369,6 +369,10 @@ a:hover {
   color: var(--text-wald);
 }
 
+.sektion--dunkel .titel {
+  color: var(--text-invers);
+}
+
 /* Zahlenblöcke von Notrufnummern nie über einen Zeilenumbruch trennen. */
 .nowrap {
   white-space: nowrap;
@@ -630,6 +634,37 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   18 · Sektion 12 — Schluss
+   Eigener Verlauf: anders positioniert und schwächer als der im Hero.
+   Der Absatz hat hier Zeilenhöhe 1.7, im Hero sind es 1.72.
+   -------------------------------------------------------------------------- */
+
+.schluss::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(52% 66% at 22% 88%, rgba(232, 160, 92, 0.20) 0%, rgba(29, 36, 39, 0) 62%);
+}
+
+.schluss__innen {
+  position: relative;
+  width: var(--breite);
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 140px) var(--pad-x);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 36px);
+  align-items: flex-start;
+}
+
+.schluss__text {
+  font-size: clamp(19px, 1.7vw, 22px);
+  line-height: 1.7;
+  color: var(--text-invers-2);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
    8 · Buttons
    Wichtig: der Prototyp lässt bewusst nur background und border-color
    übergehen, nicht color. Das ist hier 1:1 nachgebaut.
@@ -803,14 +838,15 @@ a:hover {
   text-wrap: pretty;
 }
 
-.hero__aktion {
+/* Button plus Hinweiszeile darunter — teilen sich Hero und Schluss-Sektion. */
+.aktion {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
 }
 
-.hero__hinweis {
+.hinweis-invers {
   font-size: 17px;
   line-height: 1.6;
   color: var(--text-invers-3);

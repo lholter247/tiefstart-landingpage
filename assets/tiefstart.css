@@ -379,6 +379,231 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   8 · Buttons
+   Wichtig: der Prototyp lässt bewusst nur background und border-color
+   übergehen, nicht color. Das ist hier 1:1 nachgebaut.
+   -------------------------------------------------------------------------- */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radius);
+  transition: background var(--uebergang), border-color var(--uebergang);
+}
+
+/* Hero und Schluss-Sektion.
+   min-height statt height: das Label "Gespräch vereinbaren — 25 Minuten"
+   braucht 342px und bricht unter 390px Viewport-Breite auf zwei Zeilen um —
+   mit fester Höhe lief die zweite Zeile unten aus der Fläche. Auf Desktop
+   ergibt das gemessen exakt dieselben 56px wie im Prototyp. */
+.cta--primaer {
+  min-height: 56px;
+  padding: 11px 32px;
+  font-size: 18px;
+  color: var(--tiefdunkel);
+  background: var(--feuerschein);
+  border-color: var(--feuerschein);
+}
+
+.cta--primaer:hover {
+  background: var(--feuerschein-hell);
+  border-color: var(--feuerschein-hell);
+  color: var(--tiefdunkel);
+}
+
+/* Der Standard-Fokusring wäre auf dunklem Grund Feuerschein — also dieselbe
+   Farbe wie der Button selbst. Hier deshalb hell, damit der Ring sichtbar
+   vom Button zu unterscheiden ist (13,9:1 gegen Tiefdunkel). */
+.cta--primaer:focus-visible {
+  outline-color: var(--text-invers);
+}
+
+/* Header */
+.cta--sekundaer {
+  height: 46px;
+  padding: 0 22px;
+  font-size: 17px;
+  color: var(--terrakotta);
+  border-color: var(--linie-terrakotta);
+}
+
+.cta--sekundaer:hover {
+  background: var(--sand);
+  border-color: var(--terrakotta);
+  color: var(--terrakotta-dunkel);
+}
+
+/* Sektion 13 — wie der sekundäre Button, nur größer. */
+.cta--sekundaer-gross {
+  align-self: flex-start;
+  height: 52px;
+  padding: 0 30px;
+  font-size: 18px;
+  color: var(--terrakotta);
+  border-color: var(--linie-terrakotta);
+}
+
+.cta--sekundaer-gross:hover {
+  background: var(--sand);
+  border-color: var(--terrakotta);
+  color: var(--terrakotta-dunkel);
+}
+
+/* --------------------------------------------------------------------------
+   9 · Notfall-Banner
+   Im Prototyp trugen alle Links eine Inline-Farbe, wodurch die globale
+   a:hover-Regel dort nie gegriffen hat. Die Regel unten stellt das nach:
+   die Banner-Links wechseln beim Hovern die Farbe nicht.
+   -------------------------------------------------------------------------- */
+
+.notfall {
+  background: var(--warnfeld);
+  border-bottom: 1px solid var(--linie-warm);
+  padding: 12px var(--pad-x);
+}
+
+.notfall p {
+  width: var(--breite);
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--warn-link);
+  text-wrap: pretty;
+}
+
+/* nowrap: auf schmalen Displays soll keine Notrufnummer mitten im Zahlenblock
+   umbrechen. Ab ca. 340px Breite ändert das an der Darstellung nichts. */
+.notfall a,
+.notfall a:hover {
+  color: var(--warn-link);
+  border-bottom: 1px solid var(--warn-link-linie);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   10 · Kopfzeile
+   -------------------------------------------------------------------------- */
+
+.seitenkopf {
+  border-bottom: 1px solid var(--linie);
+}
+
+.seitenkopf__innen {
+  width: var(--breite);
+  margin: 0 auto;
+  padding: 20px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.marke {
+  display: flex;
+  align-items: center;
+  gap: 10.3px;
+}
+
+.marke,
+.marke:hover {
+  color: var(--text);
+}
+
+/* height wie im Prototyp; aspect-ratio aus der viewBox 0 -21 100 121,
+   damit vor dem Laden des SVG kein Layoutsprung entsteht. */
+.marke__zeichen {
+  height: 25px;
+  aspect-ratio: 100 / 121;
+}
+
+.marke__wort {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* --------------------------------------------------------------------------
+   11 · Sektion 01 — Hero
+   Der Feuerschein-Verlauf lag im Prototyp in einem eigenen leeren <div>.
+   Hier ist er ein ::before, damit im DOM kein inhaltsloses Element steht.
+   -------------------------------------------------------------------------- */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(58% 62% at 78% 14%, rgba(232, 160, 92, 0.22) 0%, rgba(29, 36, 39, 0) 62%);
+}
+
+/* Eigene Polsterung: der Hero ist oben/unten großzügiger als die übrigen
+   Sektionen, und unten minimal knapper als oben (148 gegen 152). */
+.hero__innen {
+  position: relative;
+  width: var(--breite);
+  margin: 0 auto;
+  padding: clamp(72px, 11vw, 152px) var(--pad-x) clamp(72px, 11vw, 148px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.4vw, 40px);
+  align-items: flex-start;
+}
+
+.hero__titel {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6.4vw, 72px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--text-invers);
+  text-wrap: pretty;
+}
+
+.hero__text {
+  font-size: clamp(19px, 1.7vw, 22px);
+  line-height: 1.72;
+  color: var(--text-invers-2);
+  text-wrap: pretty;
+}
+
+/* Button plus Hinweiszeile darunter — teilen sich Hero und Schluss-Sektion. */
+.aktion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hinweis-invers {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-invers-3);
+}
+
+/* --------------------------------------------------------------------------
+   12 · Sektion 02 — Vielleicht kennst du das
+   Fünf kurze Aussagen an einer Randlinie. Sie stehen wie im Prototyp als
+   einzelne Absätze, nicht als Liste.
+   -------------------------------------------------------------------------- */
+
+.aussagen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 2px solid var(--linie);
+  padding-left: clamp(20px, 3vw, 32px);
+}
+
+.aussage {
+  font-family: var(--serif);
+  font-size: clamp(21px, 2.1vw, 26px);
+  line-height: 1.55;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+/* --------------------------------------------------------------------------
    13 · Sektion 06 — Wie eine Woche aussieht
    Der Prototyp baut das aus divs, inhaltlich ist es aber eine Tabelle:
    ohne Tabellensemantik geht der Zusammenhang "Wann → Was" für Screenreader
@@ -674,227 +899,64 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   8 · Buttons
-   Wichtig: der Prototyp lässt bewusst nur background und border-color
-   übergehen, nicht color. Das ist hier 1:1 nachgebaut.
+   20 · Fußzeile
+   Die Wortmarke ist hier bewusst kein Link — im Prototyp ein reines div.
+   Abstand 9,9px statt der 10,3px im Seitenkopf.
+   Die Notfall-Links wechseln beim Hovern die Farbe nicht, die Nav-Links schon.
    -------------------------------------------------------------------------- */
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  font-weight: 600;
-  border: 1px solid;
-  border-radius: var(--radius);
-  transition: background var(--uebergang), border-color var(--uebergang);
+.seitenfuss {
+  background: var(--tiefdunkel);
 }
 
-/* Hero und Schluss-Sektion.
-   min-height statt height: das Label "Gespräch vereinbaren — 25 Minuten"
-   braucht 342px und bricht unter 390px Viewport-Breite auf zwei Zeilen um —
-   mit fester Höhe lief die zweite Zeile unten aus der Fläche. Auf Desktop
-   ergibt das gemessen exakt dieselben 56px wie im Prototyp. */
-.cta--primaer {
-  min-height: 56px;
-  padding: 11px 32px;
-  font-size: 18px;
-  color: var(--tiefdunkel);
-  background: var(--feuerschein);
-  border-color: var(--feuerschein);
-}
-
-.cta--primaer:hover {
-  background: var(--feuerschein-hell);
-  border-color: var(--feuerschein-hell);
-  color: var(--tiefdunkel);
-}
-
-/* Der Standard-Fokusring wäre auf dunklem Grund Feuerschein — also dieselbe
-   Farbe wie der Button selbst. Hier deshalb hell, damit der Ring sichtbar
-   vom Button zu unterscheiden ist (13,9:1 gegen Tiefdunkel). */
-.cta--primaer:focus-visible {
-  outline-color: var(--text-invers);
-}
-
-/* Header */
-.cta--sekundaer {
-  height: 46px;
-  padding: 0 22px;
-  font-size: 17px;
-  color: var(--terrakotta);
-  border-color: var(--linie-terrakotta);
-}
-
-.cta--sekundaer:hover {
-  background: var(--sand);
-  border-color: var(--terrakotta);
-  color: var(--terrakotta-dunkel);
-}
-
-/* Sektion 13 — wie der sekundäre Button, nur größer. */
-.cta--sekundaer-gross {
-  align-self: flex-start;
-  height: 52px;
-  padding: 0 30px;
-  font-size: 18px;
-  color: var(--terrakotta);
-  border-color: var(--linie-terrakotta);
-}
-
-.cta--sekundaer-gross:hover {
-  background: var(--sand);
-  border-color: var(--terrakotta);
-  color: var(--terrakotta-dunkel);
-}
-
-/* --------------------------------------------------------------------------
-   9 · Notfall-Banner
-   Im Prototyp trugen alle Links eine Inline-Farbe, wodurch die globale
-   a:hover-Regel dort nie gegriffen hat. Die Regel unten stellt das nach:
-   die Banner-Links wechseln beim Hovern die Farbe nicht.
-   -------------------------------------------------------------------------- */
-
-.notfall {
-  background: var(--warnfeld);
-  border-bottom: 1px solid var(--linie-warm);
-  padding: 12px var(--pad-x);
-}
-
-.notfall p {
+.seitenfuss__innen {
   width: var(--breite);
   margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--warn-link);
-  text-wrap: pretty;
-}
-
-/* nowrap: auf schmalen Displays soll keine Notrufnummer mitten im Zahlenblock
-   umbrechen. Ab ca. 340px Breite ändert das an der Darstellung nichts. */
-.notfall a,
-.notfall a:hover {
-  color: var(--warn-link);
-  border-bottom: 1px solid var(--warn-link-linie);
-  white-space: nowrap;
-}
-
-/* --------------------------------------------------------------------------
-   10 · Kopfzeile
-   -------------------------------------------------------------------------- */
-
-.seitenkopf {
-  border-bottom: 1px solid var(--linie);
-}
-
-.seitenkopf__innen {
-  width: var(--breite);
-  margin: 0 auto;
-  padding: 20px var(--pad-x);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.marke {
-  display: flex;
-  align-items: center;
-  gap: 10.3px;
-}
-
-.marke,
-.marke:hover {
-  color: var(--text);
-}
-
-/* height wie im Prototyp; aspect-ratio aus der viewBox 0 -21 100 121,
-   damit vor dem Laden des SVG kein Layoutsprung entsteht. */
-.marke__zeichen {
-  height: 25px;
-  aspect-ratio: 100 / 121;
-}
-
-.marke__wort {
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-}
-
-/* --------------------------------------------------------------------------
-   11 · Sektion 01 — Hero
-   Der Feuerschein-Verlauf lag im Prototyp in einem eigenen leeren <div>.
-   Hier ist er ein ::before, damit im DOM kein inhaltsloses Element steht.
-   -------------------------------------------------------------------------- */
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(58% 62% at 78% 14%, rgba(232, 160, 92, 0.22) 0%, rgba(29, 36, 39, 0) 62%);
-}
-
-/* Eigene Polsterung: der Hero ist oben/unten großzügiger als die übrigen
-   Sektionen, und unten minimal knapper als oben (148 gegen 152). */
-.hero__innen {
-  position: relative;
-  width: var(--breite);
-  margin: 0 auto;
-  padding: clamp(72px, 11vw, 152px) var(--pad-x) clamp(72px, 11vw, 148px);
+  padding: clamp(48px, 6vw, 76px) var(--pad-x);
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 3.4vw, 40px);
-  align-items: flex-start;
+  gap: clamp(28px, 3vw, 40px);
 }
 
-.hero__titel {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(40px, 6.4vw, 72px);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+.marke--invers {
+  gap: 9.9px;
   color: var(--text-invers);
-  text-wrap: pretty;
 }
 
-.hero__text {
-  font-size: clamp(19px, 1.7vw, 22px);
-  line-height: 1.72;
+.marke--invers .marke__zeichen {
+  height: 24px;
+}
+
+.marke--invers .marke__wort {
+  font-size: 24px;
+}
+
+.seitenfuss__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.seitenfuss__nav a {
+  font-size: 18px;
   color: var(--text-invers-2);
-  text-wrap: pretty;
 }
 
-/* Button plus Hinweiszeile darunter — teilen sich Hero und Schluss-Sektion. */
-.aktion {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
+.seitenfuss__nav a:hover {
+  color: var(--feuerschein);
 }
 
-.hinweis-invers {
+.seitenfuss__notfall {
+  padding-top: clamp(20px, 2.4vw, 28px);
+  border-top: 1px solid var(--linie-dunkel);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-invers-3);
-}
-
-/* --------------------------------------------------------------------------
-   12 · Sektion 02 — Vielleicht kennst du das
-   Fünf kurze Aussagen an einer Randlinie. Sie stehen wie im Prototyp als
-   einzelne Absätze, nicht als Liste.
-   -------------------------------------------------------------------------- */
-
-.aussagen {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-left: 2px solid var(--linie);
-  padding-left: clamp(20px, 3vw, 32px);
-}
-
-.aussage {
-  font-family: var(--serif);
-  font-size: clamp(21px, 2.1vw, 26px);
-  line-height: 1.55;
-  color: var(--text-2);
   text-wrap: pretty;
 }
+
+.seitenfuss__notfall a,
+.seitenfuss__notfall a:hover {
+  color: var(--feuerschein);
+}
+

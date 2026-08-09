@@ -724,18 +724,11 @@ a:hover {
   border-bottom: 1px solid var(--linie);
 }
 
+/* Trägt nur noch den Titel — display: flex, align-items und gap sind mit der
+   Nummerierung entfallen. flex und min-width halten die Zweispaltigkeit. */
 .etappe__kopf {
   flex: 0 0 auto;
   min-width: 120px;
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.etappe__nr {
-  font-family: var(--serif);
-  font-size: clamp(24px, 2.4vw, 30px);
-  color: var(--terrakotta);
 }
 
 .etappe__titel {

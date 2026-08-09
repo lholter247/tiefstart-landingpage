@@ -311,6 +311,13 @@ a:hover {
   color: var(--text);
 }
 
+/* Kleinste Serifen-Überschrift, für die Zwischenebene langer Textseiten.
+   Gleiche Staffel wie die Etappen- und Schritt-Titel der Startseite. */
+.titel--25 {
+  font-size: clamp(21px, 1.9vw, 25px);
+  line-height: 1.3;
+}
+
 .titel--36 {
   font-size: clamp(26px, 3.2vw, 36px);
   line-height: 1.2;
@@ -1025,16 +1032,6 @@ a:hover {
 /* Browser setzen address von Haus aus kursiv. */
 .adresse {
   font-style: normal;
-}
-
-/* Label in gemischter Schreibung. Die Datenschutzerklärung hat lange
-   Zwischenüberschriften wie "Allgemeine Hinweise zu den Rechtsgrundlagen der
-   Datenverarbeitung" — in Versalien sinkt dort die Lesegeschwindigkeit spürbar.
-   Nur die Seiten, die diese Klasse setzen, sind betroffen; die kurzen
-   Versal-Label im Impressum und auf der Startseite bleiben unberührt. */
-.label--satz {
-  text-transform: none;
-  letter-spacing: normal;
 }
 
 /* Aufzählungen im Fließtext. Der Browser-Einzug von 40px würde die Punkte aus

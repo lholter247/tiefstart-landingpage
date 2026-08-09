@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Datenschutz und Kontakt kommen hier dazu, sobald die Seiten existieren —
-     eine Sitemap, die auf 404er zeigt, meldet die Search Console als Fehler. -->
+<!-- Kontakt kommt hier dazu, sobald die Seite existiert — eine Sitemap, die
+     auf 404er zeigt, meldet die Search Console als Fehler. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://projekt-tiefstart.de/</loc>
@@ -8,6 +8,10 @@
   </url>
   <url>
     <loc>https://projekt-tiefstart.de/impressum</loc>
+    <lastmod>2026-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://projekt-tiefstart.de/datenschutz</loc>
     <lastmod>2026-08-09</lastmod>
   </url>
 </urlset>

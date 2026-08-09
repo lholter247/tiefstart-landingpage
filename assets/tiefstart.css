@@ -136,6 +136,7 @@ body {
 h1,
 h2,
 h3,
+h4,
 p {
   margin: 0;
 }
@@ -1001,8 +1002,49 @@ a:hover {
   gap: 12px;
 }
 
+/* Die Datenschutzerklärung nennt Adressen wie
+   privacycenter.instagram.com/policy im Fließtext. Solche URLs enthalten keine
+   Stelle, an der der Browser von sich aus umbricht — bei 375px ragte die
+   längste 16px aus der Textspalte. break-word greift nur dann, wenn ein Wort
+   sonst überliefe, und lässt normalen Text unberührt. */
+.textblock p {
+  overflow-wrap: break-word;
+}
+
+/* Die h4-Zwischenüberschriften der Datenschutzerklärung brauchen etwas mehr
+   Luft nach oben als die 12px, die .textblock allen Kindern gibt — sonst
+   kleben sie am Absatz davor. */
+.textblock h4 {
+  margin-top: 10px;
+}
+
+.textblock h4:first-child {
+  margin-top: 0;
+}
+
 /* Browser setzen address von Haus aus kursiv. */
 .adresse {
   font-style: normal;
+}
+
+/* Label in gemischter Schreibung. Die Datenschutzerklärung hat lange
+   Zwischenüberschriften wie "Allgemeine Hinweise zu den Rechtsgrundlagen der
+   Datenverarbeitung" — in Versalien sinkt dort die Lesegeschwindigkeit spürbar.
+   Nur die Seiten, die diese Klasse setzen, sind betroffen; die kurzen
+   Versal-Label im Impressum und auf der Startseite bleiben unberührt. */
+.label--satz {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Aufzählungen im Fließtext. Der Browser-Einzug von 40px würde die Punkte aus
+   der Textspalte herausschieben; 1.4em hält sie daran. Abstand 8px, etwas
+   enger als die 12px zwischen den Blöcken. */
+.textliste {
+  margin: 0;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 

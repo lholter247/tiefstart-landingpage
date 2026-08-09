@@ -793,7 +793,10 @@ a:hover {
   gap: 20px;
 }
 
-.hinweisfeld p {
+/* Auch Listeneinträge, nicht nur Absätze: die Kontaktseite stellt die
+   Notfallnummern als Liste in dieses Feld. */
+.hinweisfeld p,
+.hinweisfeld li {
   font-size: var(--fs-klein);
   line-height: 1.7;
   color: var(--warn-text);

@@ -163,9 +163,3 @@ Wenn Sie diesen Link anklicken, verlassen Sie unsere Website. Die von Ihnen dort
 Die Verarbeitung findet auch in den USA statt. Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von TidyCal unter https://tidycal.com/privacy.
 
 Wenn Sie diesen Weg nicht nutzen möchten, können Sie uns stattdessen jederzeit per E-Mail schreiben.
-
-### Instagram
-
-Auf dieser Website verlinken wir an mehreren Stellen auf unser Profil bei Instagram. Anbieter ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland.
-
-Es handelt sich um einen einfachen Textlink. Es sind keine Inhalte von Instagram eingebettet, es werden keine Skripte oder Zählpixel geladen. Beim Aufruf unserer Website werden daher keine Daten an Meta übermittelt. Erst wenn Sie den Link anklicken, gelangen Sie auf die Plattform, und es gelten die Datenschutzbestimmungen von Meta: https://privacycenter.instagram.com/policy.

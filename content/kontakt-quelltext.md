@@ -37,7 +37,3 @@ Dann bin ich nicht der richtige Weg. Ich bin nicht rund um die Uhr erreichbar, u
 - **Notruf: 112** — bei akuter Gefahr
 
 Das ist kein Abschieben. Es ist der schnellere Weg.
-
-## Sonst noch
-
-Auf Instagram findest du mich unter @projekt_tiefstart. Dort poste ich — Gespräche führe ich dort nicht. Dafür sind die beiden Wege oben da.
